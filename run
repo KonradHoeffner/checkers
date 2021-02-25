@@ -1,0 +1,2 @@
+javac src/checkers/Main.java -cp src
+java -cp src checkers.Main
