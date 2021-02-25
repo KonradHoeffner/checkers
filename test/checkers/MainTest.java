@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import checkers.Board.IllegalMoveException;
+
 class MainTest {
 
 	@Test
@@ -23,22 +25,23 @@ class MainTest {
 	void testMove()
 	{
 		Board board = new Board();
-		assertThrows(IllegalArgumentException.class,()->new Move("A1B2AAA1",board)); // too long
-		assertThrows(IllegalArgumentException.class,()->new Move("A1Z1",board)); // left position invalid 
-		assertThrows(IllegalArgumentException.class,()->new Move("Z1A1",board)); // right position invalid
-		assertThrows(IllegalArgumentException.class,()->new Move("A1H8",board)); // valid positions but invalid move
-		assertThrows(IllegalArgumentException.class,()->new Move("A1B2",board)); // board not empty
+		assertThrows(IllegalMoveException.class,()->board.move("A1B2AAA1"));; // too long
+		assertThrows(IllegalMoveException.class,()->board.move("A1Z1"));; // left position invalid 
+		assertThrows(IllegalMoveException.class,()->board.move("Z1A1"));; // right position invalid
+		assertThrows(IllegalMoveException.class,()->board.move("A1H8"));; // valid positions but invalid move
+		assertThrows(IllegalMoveException.class,()->board.move("A1B2"));; // board not empty
 	}
 	
 	@Test
 	void testGame()
 	{
 		Board board = new Board();
-		new Move("B2C3",board);
-		new Move("G7F6",board);
-		new Move("C3D4",board);
-		new Move("F6E5",board);
-		new Move("D4F6",board); // kill E6
+		String[] moves = {"B2C3","G7F6","C3D4","F6E5","D4F6"}; // kill E6
+		for(String m: moves)
+		{
+			System.out.println(board);
+			board = board.move(m);
+		}
 		assertEquals(Cell.EMPTY, board.at(new Position("D4")));
 		assertEquals(Cell.EMPTY, board.at(new Position("E5")));
 		assertEquals(Cell.BLACK, board.at(new Position("F6")));
