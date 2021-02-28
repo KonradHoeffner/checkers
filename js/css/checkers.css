@@ -1,0 +1,30 @@
+div.board
+{
+    display: grid;
+}
+
+div.cell
+{
+  width: 16px;
+  height: 16px;
+}
+
+div.blackPiece
+{
+  background-image: '..img/black_piece.png'
+}
+
+div.whitePiece
+{
+    background-image: '..img/white_piece.png'
+}
+
+div.blackCell
+{
+  background-color: black
+}
+
+div.whiteCell
+{
+  background-color: white
+}
