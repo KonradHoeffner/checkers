@@ -1,17 +1,37 @@
+/* https://levelup.gitconnected.com/how-to-make-a-go-board-with-css-ac4cba7d0b72 */
 div.board
 {
     display: grid;
+    width: 80vh;
+    height: 80vh;
+    grid-template-rows: repeat(8, 10vh);
+    grid-template-columns: repeat(8, 10vh);
 }
 
 div.cell
 {
-  width: 16px;
-  height: 16px;
 }
 
-div.blackPiece
+.blackPiece::after, .whitePiece::after
 {
-  background-image: '..img/black_piece.png'
+  border-radius: 50%;
+  width: 80%;
+  height: 80%;
+  display:inline-block;
+  position: relative;
+  content: "";
+  left: 10%;
+  top: 10%;
+}
+
+.blackPiece::after
+{
+  background-color: black;
+}
+
+.whitePiece::after
+{
+  background-color: white;
 }
 
 div.whitePiece
@@ -21,10 +41,10 @@ div.whitePiece
 
 div.blackCell
 {
-  background-color: black
+  background-color: #995533
 }
 
 div.whiteCell
 {
-  background-color: white
+  background-color: #ffddaa
 }
