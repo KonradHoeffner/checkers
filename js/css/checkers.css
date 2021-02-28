@@ -24,6 +24,16 @@ div.cell
   top: 10%;
 }
 
+div.blackPiece.selected::after
+{
+  background-color: #ff0000;
+}
+
+div.whitePiece.selected::after
+{
+  background-color: #ff0000;
+}
+
 .blackPiece::after
 {
   background-color: black;
