@@ -59,8 +59,8 @@ public class Board
 		if(s.length()!=4) throw new IllegalMoveException(s,"move '"+s+"' length != 4");
 		try
 		{
-			Position start = new Position(s.substring(0,2));
-			Position end = new Position(s.substring(2,4));
+			Position start = Position.fromString(s.substring(0,2));
+			Position end = Position.fromString(s.substring(2,4));
 			Cell player = this.activePlayerCell();
 
 			if(this.at(start)==Cell.EMPTY) {throw new IllegalMoveException(s,"No game piece on move start position "+s+".");}
@@ -79,7 +79,7 @@ public class Board
 			{
 				Board newBoard = new Board(this);
 				if(newBoard.at(end)!=Cell.EMPTY) {throw new IllegalMoveException(s,"Board is not empty at end position "+s+".");}
-				Position enemyPos = new Position((start.col+end.col)/2,(start.row+end.row)/2);
+				Position enemyPos = Position.fromString((start.col+end.col)/2,(start.row+end.row)/2);
 				Cell enemy = newBoard.nonActivePlayerCell();
 				if(newBoard.at(enemyPos)!=enemy) {throw new IllegalMoveException(s,"Board does not have enemy player "+enemy+" at the kill position "+enemyPos+".");}
 				newBoard.set(start, Cell.EMPTY);

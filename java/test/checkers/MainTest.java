@@ -12,13 +12,13 @@ class MainTest {
 	@Test
 	void testPosition()
 	{
-		new Position("A1");
-		new Position("H8");
+		Position.fromString("A1");
+		Position.fromString("H8");
 		
-		assertThrows(IllegalArgumentException.class,()->new Position("AAAA1")); // too long
-		assertThrows(IllegalArgumentException.class,()->new Position("A9")); // row out of bounds 
-		assertThrows(IllegalArgumentException.class,()->new Position("Z1")); // col out of bounds
-		assertThrows(IllegalArgumentException.class,()->new Position("A2")); // not a black square
+		assertThrows(IllegalArgumentException.class,()->Position.fromString("AAAA1")); // too long
+		assertThrows(IllegalArgumentException.class,()->Position.fromString("A9")); // row out of bounds 
+		assertThrows(IllegalArgumentException.class,()->Position.fromString("Z1")); // col out of bounds
+		assertThrows(IllegalArgumentException.class,()->Position.fromString("A2")); // not a black square
 	}
 
 	@Test
@@ -42,8 +42,8 @@ class MainTest {
 			System.out.println(board);
 			board = board.move(m);
 		}
-		assertEquals(Cell.EMPTY, board.at(new Position("D4")));
-		assertEquals(Cell.EMPTY, board.at(new Position("E5")));
-		assertEquals(Cell.BLACK, board.at(new Position("F6")));
+		assertEquals(Cell.EMPTY, board.at(Position.fromString("D4")));
+		assertEquals(Cell.EMPTY, board.at(Position.fromString("E5")));
+		assertEquals(Cell.BLACK, board.at(Position.fromString("F6")));
 	}
 }
